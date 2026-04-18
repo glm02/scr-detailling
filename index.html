@@ -260,7 +260,10 @@
                         <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Votre Nom</label><input type="text" id="user_name" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
                         <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Téléphone</label><input type="tel" id="user_phone" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
                     </div>
-                    <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Véhicule</label><input type="text" id="car_model" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Véhicule</label><input type="text" id="car_model" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Date souhaitée</label><input type="date" id="desired_date" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white [color-scheme:dark]"></div>
+                    </div>
                     <div>
                         <label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Prestation</label>
                         <select id="package_choice" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white appearance-none">
@@ -375,6 +378,7 @@
                 name: document.getElementById('user_name').value,
                 phone: document.getElementById('user_phone').value,
                 model: document.getElementById('car_model').value,
+                date: document.getElementById('desired_date').value,
                 pack: document.getElementById('package_choice').value,
                 message: document.getElementById('user_message').value
             };
