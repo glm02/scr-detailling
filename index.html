@@ -55,7 +55,7 @@
         <div class="max-w-4xl mx-auto glass-card p-6 rounded-[24px] shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
             <div class="flex-1">
                 <h4 class="text-xs font-800 uppercase tracking-widest text-blue-accent mb-2">Respect de votre vie privée</h4>
-                <p class="text-[11px] text-gray-400">En continuant, vous acceptez notre <a href="#" class="underline hover:text-blue-accent">politique de confidentialité</a> (RGPD).</p>
+                <p class="text-[11px] text-gray-400">En continuant, vous acceptez notre <a href="#" onclick="openModal('modal-rgpd'); return false;" class="underline hover:text-blue-accent">politique de confidentialité</a> (RGPD).</p>
             </div>
             <div class="flex gap-4">
                 <button onclick="closeCookies()" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white">Refuser</button>
@@ -65,7 +65,7 @@
     </div>
 
     <!-- Header Navigation -->
-    <nav class="fixed w-full z-50 glass-card px-6 py-4 flex justify-between items-center">
+    <nav class="absolute top-0 w-full z-50 glass-card px-6 py-4 flex justify-between items-center bg-transparent border-none">
         <div class="text-xl font-800 uppercase text-white">SCR<span class="text-blue-accent italic">DETAILING</span></div>
         <div class="hidden lg:flex space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
             <a href="#expert" class="hover:text-blue-accent transition">Expertise</a>
@@ -258,7 +258,7 @@
                 <form id="quoteForm" class="space-y-8 relative z-10">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Votre Nom</label><input type="text" id="user_name" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
-                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Téléphone</label><input type="tel" id="user_phone" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Téléphone</label><input type="tel" id="user_phone" required pattern="[0-9]{10}" title="Format attendu : 10 chiffres" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Véhicule</label><input type="text" id="car_model" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
@@ -267,7 +267,7 @@
                     <div>
                         <label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Prestation</label>
                         <select id="package_choice" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white appearance-none">
-                            <option class="bg-[#1e293b]" value="PLATINIUM (100€)">Pack PLATINIUM (100€)</option>
+                            <option class="bg-[#1e293b]" value="PLATINUM (100€)">Pack PLATINUM (100€)</option>
                             <option class="bg-[#1e293b]" value="GOLD (50€)">Pack GOLD (50€)</option>
                         </select>
                     </div>
@@ -288,10 +288,59 @@
     </section>
 
     <!-- Footer -->
-    <footer class="pt-20 pb-12 px-6 border-t border-white/5 bg-gradient-to-b from-transparent to-black text-center">
-        <div class="text-2xl font-800 uppercase italic text-white mb-4">SCR<span class="text-blue-accent">DETAILING</span></div>
-        <div class="text-[10px] text-gray-500 uppercase font-bold tracking-[0.2em] mt-8">© 2024 SCR Detailing • Excellence Automobile à Domicile</div>
+    <footer class="pt-24 pb-12 px-6 border-t border-white/5 bg-gradient-to-b from-transparent to-black">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div>
+                <div class="text-2xl font-800 uppercase italic text-white mb-4">SCR<span class="text-blue-accent">DETAILING</span></div>
+                <p class="text-gray-400 text-xs leading-relaxed max-w-sm">Expert en esthétique automobile à domicile. Nous redonnons à votre véhicule son éclat d'origine grâce à des techniques de detailing premium.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6 border-b border-white/10 pb-2 inline-block">Contact</h4>
+                <ul class="text-gray-400 text-xs space-y-4">
+                    <li><a href="tel:0749507140" class="hover:text-blue-accent transition">📞 07 49 50 71 40</a></li>
+                    <li><a href="mailto:glm07rafael@gmail.com" class="hover:text-blue-accent transition">✉️ glm07rafael@gmail.com</a></li>
+                    <li>📍 Service Mobile (À domicile ou sur lieu de travail)</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6 border-b border-white/10 pb-2 inline-block">Légal & Paramètres</h4>
+                <ul class="text-gray-400 text-xs space-y-4">
+                    <li><button onclick="openModal('modal-rgpd')" class="hover:text-blue-accent transition">Politique de confidentialité (RGPD)</button></li>
+                    <li><button onclick="openModal('modal-legal')" class="hover:text-blue-accent transition">Mentions légales</button></li>
+                    <li><button onclick="document.getElementById('cookie-banner').classList.remove('hidden-banner')" class="hover:text-blue-accent transition">Gérer les cookies</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center border-t border-white/10 pt-8">
+            <div class="text-[10px] text-gray-500 uppercase font-bold tracking-[0.2em]">© <span id="current-year">2024</span> SCR Detailing • Tous droits réservés</div>
+        </div>
     </footer>
+
+    <!-- Modals (Popups) -->
+    <div id="modal-rgpd" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card w-full max-w-2xl max-h-[80vh] overflow-y-auto p-8 rounded-3xl relative">
+            <button onclick="closeModal('modal-rgpd')" class="absolute top-6 right-6 text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Politique de Confidentialité (RGPD)</h3>
+            <div class="text-sm text-gray-300 space-y-5">
+                <p><strong>1. Collecte des données :</strong> Les informations recueillies via notre formulaire de contact (nom, téléphone, véhicule) sont sécurisées. Elles nous permettent uniquement de traiter votre demande de devis et de vous recontacter.</p>
+                <p><strong>2. Utilisation :</strong> Ces données ne sont ni vendues, ni cédées à des tiers. Elles sont stockées temporairement pour la gestion de la relation client par messagerie (Email et Telegram de l'administration).</p>
+                <p><strong>3. Vos droits :</strong> Conformément à la réglementation RGPD, vous disposez d'un droit d'accès, de rectification et d'effacement de vos données. Pour l'exercer, contactez-nous par email à l'adresse indiquée en pied de page.</p>
+                <p><strong>4. Cookies :</strong> Notre site n'utilise pas de cookies de traçage publicitaire, mais uniquement un cookie local de session très basique ("cookiesAccepted") pour mémoriser votre choix de fermer la bannière de consentement.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-legal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card w-full max-w-2xl max-h-[80vh] overflow-y-auto p-8 rounded-3xl relative">
+            <button onclick="closeModal('modal-legal')" class="absolute top-6 right-6 text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Mentions Légales</h3>
+            <div class="text-sm text-gray-300 space-y-5">
+                <p><strong>Éditeur du site :</strong><br>SCR Detailing<br>Email de contact principal : glm07rafael@gmail.com<br>Téléphone : 07 49 50 71 40</p>
+                <p><strong>Hébergement :</strong><br>Ce site est hébergé par Vercel Inc., 340 S Lemon Ave #4133 Walnut, CA 91789, USA.</p>
+                <p><strong>Propriété Intellectuelle :</strong><br>Le contenu, le design, et la charte graphique de ce site Web sont la propriété de l'éditeur du site. Toute reproduction, copie ou utilisation sans autorisation explicite est strictement interdite par la loi.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- SCRIPT DE CONFIGURATION ET D'ANIMATION -->
     <script>
@@ -335,6 +384,16 @@
             localStorage.setItem('cookiesAccepted', 'true');
         }
 
+        // Modals Logic
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
         window.onload = function() {
             appliquerImages(); // Charge les images
 
@@ -344,6 +403,16 @@
             // Duplique les avis pour créer l'effet infini
             const marquee = document.getElementById('marquee-container');
             if(marquee) marquee.innerHTML += marquee.innerHTML;
+
+            // Bug fix: date input restriction (pas de date passée)
+            const dateInput = document.getElementById('desired_date');
+            if(dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+            
+            // Set current year in footer
+            document.getElementById('current-year').innerText = new Date().getFullYear();
         }
 
         // Animations au scroll
