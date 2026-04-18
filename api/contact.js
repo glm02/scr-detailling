@@ -64,7 +64,7 @@ export default async function handler(req, res) {
             });
 
             await transporter.sendMail({
-                from: `"Site SCR Detailing" <${SMTP_USER}>`,
+                from: `"Site SCR Detailing" <onboarding@resend.dev>`,
                 to: CONTACT_EMAIL,
                 subject: `Nouvelle demande de devis : ${name} 🏎️`,
                 text: textMessage.replace(/\*/g, ''), // Version texte pur (sans les étoiles markdown)
