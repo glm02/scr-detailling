@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Méthode non autorisée' });
     }
 
-    const { name, phone, model, pack } = req.body;
+    const { name, phone, model, pack, message } = req.body;
 
     // --- VARIABLES TELEGRAM ---
     const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     const CONTACT_EMAIL = process.env.CONTACT_EMAIL; // Ton adresse email qui reçoit les alertes
 
     // Formatage des messages
-    const textMessage = `🏎️ *NOUVELLE DEMANDE SCR*\n\n👤 *Client:* ${name}\n📱 *Tél:* ${phone}\n🚘 *Véhicule:* ${model || 'Non précisé'}\n💎 *Formule:* ${pack}`;
+    const textMessage = `🏎️ *NOUVELLE DEMANDE SCR*\n\n👤 *Client:* ${name}\n📱 *Tél:* ${phone}\n🚘 *Véhicule:* ${model || 'Non précisé'}\n💎 *Formule:* ${pack}\n\n📝 *Message:*\n${message || 'Aucun message spécifique'}`;
     const htmlMessage = `
         <div style="font-family: sans-serif; color: #333;">
             <h2 style="color: #3b82f6;">🏎️ Nouvelle demande de prestation</h2>
@@ -30,6 +30,10 @@ export default async function handler(req, res) {
                 <li style="margin-bottom: 10px;"><strong>🚘 Véhicule :</strong> ${model || 'Non précisé'}</li>
                 <li style="margin-bottom: 10px;"><strong>💎 Formule :</strong> ${pack}</li>
             </ul>
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #3b82f6; border-radius: 4px;">
+                <strong>📝 Demande spécifique :</strong><br><br>
+                ${message ? message.replace(/\n/g, '<br>') : 'Aucun message.'}
+            </div>
         </div>
     `;
 

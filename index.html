@@ -47,7 +47,7 @@
     <!-- Notification Toast -->
     <div id="toast" class="glass-card px-6 py-4 rounded-2xl border-white/10 shadow-2xl flex items-center gap-4 bg-obsidian/90">
         <div id="toast-icon" class="text-blue-accent"><svg class="icon-svg w-6 h-6"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-        <div><h4 id="toast-title" class="text-sm font-bold text-white uppercase tracking-widest">Demande envoyée</h4><p id="toast-message" class="text-xs text-gray-400">Nous vous rappelons sous 2 heures.</p></div>
+        <div><h4 id="toast-title" class="text-sm font-bold text-white uppercase tracking-widest">Demande envoyée</h4><p id="toast-message" class="text-xs text-blue-300 font-semibold">Nous vous rappelons sous peu !</p></div>
     </div>
 
     <!-- Cookie Banner -->
@@ -257,23 +257,27 @@
             <div class="glass-card p-10 md:p-14 rounded-[40px] shadow-2xl relative overflow-hidden border-white/5">
                 <form id="quoteForm" class="space-y-8 relative z-10">
                     <div class="grid md:grid-cols-2 gap-8">
-                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4">Votre Nom</label><input type="text" id="user_name" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent outline-none text-white"></div>
-                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4">Téléphone</label><input type="tel" id="user_phone" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent outline-none text-white"></div>
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Votre Nom</label><input type="text" id="user_name" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Téléphone</label><input type="tel" id="user_phone" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
                     </div>
-                    <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4">Véhicule</label><input type="text" id="car_model" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent outline-none text-white"></div>
+                    <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Véhicule</label><input type="text" id="car_model" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
                     <div>
-                        <label class="block text-[10px] uppercase font-800 text-gray-500 mb-4">Prestation</label>
-                        <select id="package_choice" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent outline-none text-white appearance-none">
+                        <label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Prestation</label>
+                        <select id="package_choice" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white appearance-none">
                             <option class="bg-[#1e293b]" value="PLATINIUM (100€)">Pack PLATINIUM (100€)</option>
                             <option class="bg-[#1e293b]" value="GOLD (50€)">Pack GOLD (50€)</option>
                         </select>
                     </div>
+                    <div>
+                        <label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Détaillez votre demande (Optionnel)</label>
+                        <textarea id="user_message" rows="3" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white resize-none" placeholder="État du véhicule, attentes particulières..."></textarea>
+                    </div>
                     <div class="flex items-start gap-3">
-                        <input type="checkbox" required class="mt-1 accent-blue-accent">
+                        <input type="checkbox" required class="mt-1 accent-blue-accent cursor-pointer">
                         <p class="text-[9px] text-gray-500 uppercase tracking-tighter">J'accepte que mes données soient traitées pour ma demande de devis.</p>
                     </div>
-                    <button type="submit" id="submitBtn" class="w-full bg-white text-black py-6 rounded-2xl font-900 uppercase tracking-[0.2em] text-xs hover:bg-blue-accent hover:text-white transition duration-500">
-                        Envoyer ma demande
+                    <button type="submit" id="submitBtn" class="w-full bg-blue-accent text-white py-6 rounded-2xl font-900 uppercase tracking-[0.2em] text-xs hover:scale-[1.02] hover:bg-blue-600 transition-all duration-500 shadow-[0_0_20px_rgba(59,130,246,0.3)] flex justify-center items-center gap-3">
+                        Envoyer ma demande <svg class="icon-svg w-4 h-4"><path d="M22 2L11 13"></path><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                     </button>
                 </form>
             </div>
@@ -358,38 +362,42 @@
             setTimeout(() => toast.classList.remove('show'), 5000);
         }
 
-        // Soumission du Formulaire
+        // Soumission du Formulaire (Backend Vercel)
         document.getElementById('quoteForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerText;
-            btn.innerText = 'Envoi en cours...'; btn.disabled = true;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<span class="animate-pulse">Envoi en cours...</span>'; 
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
 
-            const name = document.getElementById('user_name').value;
-            const phone = document.getElementById('user_phone').value;
-            const model = document.getElementById('car_model').value;
-            const pack = document.getElementById('package_choice').value;
-
-            // CONFIGURATION TELEGRAM (Mets tes identifiants ici)
-            const BOT_TOKEN = 'VOTRE_TOKEN_BOT'; 
-            const CHAT_ID = 'VOTRE_CHAT_ID';
+            const payload = {
+                name: document.getElementById('user_name').value,
+                phone: document.getElementById('user_phone').value,
+                model: document.getElementById('car_model').value,
+                pack: document.getElementById('package_choice').value,
+                message: document.getElementById('user_message').value
+            };
             
             try {
-                if (BOT_TOKEN !== 'VOTRE_TOKEN_BOT') {
-                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                        method: 'POST', headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: CHAT_ID, parse_mode: 'Markdown',
-                            text: `🏎️ *NOUVELLE DEMANDE*\n\n👤 *Client:* ${name}\n📱 *Tél:* ${phone}\n🚘 *Véhicule:* ${model || 'N/A'}\n💎 *Formule:* ${pack}`
-                        })
-                    });
+                const response = await fetch('/api/contact', {
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (response.ok) {
+                    showToast("Demande envoyée ✅", "Nous vous rappelons sous peu !");
+                    this.reset();
+                } else {
+                    throw new Error("Erreur Serveur");
                 }
-                showToast("Demande envoyée", "Nous vous rappelons sous 2 heures.");
-                this.reset();
             } catch (err) {
-                showToast("Erreur", "Une erreur est survenue.", true);
+                showToast("Erreur", "Une erreur est survenue lors de l'envoi. Veuillez réessayer.", true);
             } finally {
-                btn.innerText = originalText; btn.disabled = false;
+                btn.innerHTML = originalHTML; 
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
             }
         });
     </script>
