@@ -36,19 +36,13 @@
         .animate-marquee { display: flex; width: max-content; animation: marquee 40s linear infinite; }
         .animate-marquee:hover { animation-play-state: paused; }
         
-        #toast { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); z-index: 1000; transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-        #toast.show { top: 24px; }
+
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Notification Toast -->
-    <div id="toast" class="glass-card px-6 py-4 rounded-2xl border-white/10 shadow-2xl flex items-center gap-4 bg-obsidian/90">
-        <div id="toast-icon" class="text-blue-accent"><svg class="icon-svg w-6 h-6"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-        <div><h4 id="toast-title" class="text-sm font-bold text-white uppercase tracking-widest">Demande envoyée</h4><p id="toast-message" class="text-xs text-blue-300 font-semibold">Nous vous rappelons sous peu !</p></div>
-    </div>
 
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 w-full z-[100] p-4 sm:p-6">
@@ -96,12 +90,12 @@
     </section>
 
     <!-- Section 2 : EXPERTISE -->
-    <section id="expert" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-4 gap-8">
+    <section id="expert" class="py-16 md:py-32 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-4 gap-4 md:gap-8">
             <div class="lg:col-span-2 pr-8">
                 <h2 class="text-4xl md:text-6xl font-800 mb-8 uppercase italic leading-none text-white">L'excellence <br><span class="text-blue-accent">sans compromis.</span></h2>
                 <p class="text-gray-400 text-lg font-light mb-8">Processus de restauration qui utilise les meilleurs produits du marché pour protéger et sublimer votre habitacle.</p>
-                <div class="grid grid-cols-2 gap-8">
+                <div class="grid grid-cols-2 gap-4 md:gap-8">
                     <div><div class="text-blue-accent font-800 text-3xl mb-2">100%</div><p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Autonome à domicile</p></div>
                     <div><div class="text-blue-accent font-800 text-3xl mb-2">PRO</div><p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Produits certifiés</p></div>
                 </div>
@@ -120,13 +114,13 @@
     </section>
 
     <!-- Section 3 : FORMULES (Tarifs) -->
-    <section id="formules" class="py-32 px-6 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent">
+    <section id="formules" class="py-16 md:py-32 px-6 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-20">
+            <div class="text-center mb-10 md:mb-20">
                 <h2 class="text-4xl md:text-6xl font-800 mb-4 uppercase italic text-white">Nos Formules <span class="text-blue-accent">Sur-mesure</span></h2>
                 <p class="text-gray-500 uppercase tracking-[0.3em] text-[10px] font-bold">Transparence totale • Tarifs fixes</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-10">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-10">
                 <!-- GOLD -->
                 <div class="glass-card p-12 rounded-[40px] flex flex-col hover:border-blue-accent/30 transition">
                     <div class="flex justify-between items-start mb-8">
@@ -162,7 +156,7 @@
     </section>
 
     <!-- Section 4 : REALISATIONS (Images) -->
-    <section id="realisations" class="py-32 px-6">
+    <section id="realisations" class="py-16 md:py-32 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="mb-16">
                 <h2 class="text-4xl md:text-6xl font-800 uppercase italic text-white">Le souci du <br><span class="text-blue-accent">détail.</span></h2>
@@ -185,7 +179,7 @@
     </section>
 
     <!-- Section 5 : AVIS CLIENTS -->
-    <section class="py-32 px-6 bg-blue-900/5 overflow-hidden">
+    <section class="py-16 md:py-32 px-6 bg-blue-900/5 overflow-hidden">
         <div class="max-w-7xl mx-auto mb-16 text-center">
             <h2 class="text-3xl md:text-5xl font-800 uppercase italic mb-4 text-white">Ce que disent nos <span class="text-blue-accent">clients</span></h2>
         </div>
@@ -241,8 +235,8 @@
     </section>
 
     <!-- Section 6 : FORMULAIRE DE CONTACT -->
-    <section id="contact" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20">
+    <section id="contact" class="py-16 md:py-32 px-6">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 md:gap-20">
             <div>
                 <h2 class="text-5xl md:text-7xl font-800 uppercase italic leading-none mb-10 text-white">Prêt pour le <br><span class="text-blue-accent">changement ?</span></h2>
                 <p class="text-gray-400 text-xl font-light mb-12">Remplissez le formulaire, nous vous recontactons dans l'heure pour confirmer la faisabilité technique et le créneau.</p>
@@ -255,14 +249,14 @@
             </div>
 
             <div class="glass-card p-10 md:p-14 rounded-[40px] shadow-2xl relative overflow-hidden border-white/5">
-                <form id="quoteForm" class="space-y-8 relative z-10">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Votre Nom</label><input type="text" id="user_name" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
-                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Téléphone</label><input type="tel" id="user_phone" required pattern="[0-9]{10}" title="Format attendu : 10 chiffres" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
+                <form id="quoteForm" class="space-y-6 md:space-y-8 relative z-10">
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-2 md:mb-4 focus-within:text-blue-accent transition-colors duration-300">Votre Nom</label><input type="text" id="user_name" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-2 md:mb-4 focus-within:text-blue-accent transition-colors duration-300">Téléphone</label><input type="tel" id="user_phone" required pattern="[0-9]{10}" title="Format attendu : 10 chiffres" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Véhicule</label><input type="text" id="car_model" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
-                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Date souhaitée</label><input type="date" id="desired_date" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white [color-scheme:dark]"></div>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-2 md:mb-4 focus-within:text-blue-accent transition-colors duration-300">Véhicule</label><input type="text" id="car_model" class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white"></div>
+                        <div><label class="block text-[10px] uppercase font-800 text-gray-500 mb-2 md:mb-4 focus-within:text-blue-accent transition-colors duration-300">Date souhaitée</label><input type="date" id="desired_date" required class="w-full bg-transparent border-b border-white/10 p-2 focus:border-blue-accent transition-colors duration-300 outline-none text-white [color-scheme:dark]"></div>
                     </div>
                     <div>
                         <label class="block text-[10px] uppercase font-800 text-gray-500 mb-4 focus-within:text-blue-accent transition-colors duration-300">Prestation</label>
@@ -288,7 +282,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="pt-24 pb-12 px-6 border-t border-white/5 bg-gradient-to-b from-transparent to-black">
+    <footer class="pt-16 md:pt-24 pb-12 px-6 border-t border-white/5 bg-gradient-to-b from-transparent to-black">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             <div>
                 <div class="text-2xl font-800 uppercase italic text-white mb-4">SCR<span class="text-blue-accent">DETAILING</span></div>
@@ -427,11 +421,7 @@
 
         // Notifications
         function showToast(title, message, isError = false) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-title').innerText = title;
-            document.getElementById('toast-message').innerText = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 5000);
+            alert(title + " : " + message);
         }
 
         // Soumission du Formulaire (Backend Vercel)
